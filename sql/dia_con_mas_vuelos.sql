@@ -1,18 +1,16 @@
-WITH vuelos_total AS (
+WITH total_vuelos_fecha AS (
 
-SELECT id_aerolinea, 
+SELECT fecha, 
        COUNT(*) AS total
   FROM vuelos
- GROUP BY id_aerolinea
+ GROUP BY fecha
 ),
-aerolinea_posiciones AS (
+fecha_posiciones AS (
 
-SELECT id_aerolinea, 
+SELECT fecha, 
        RANK () OVER(ORDER BY total DESC) AS position
-       FROM vuelos_total
+       FROM total_vuelos_fecha
 )
-SELECT aerolineas.nombre
-  FROM aerolinea_posiciones
-       LEFT JOIN aerolineas
-       ON aerolinea_posiciones.id_aerolinea = aerolineas.id
+SELECT fecha_posiciones.fecha
+  FROM fecha_posiciones
  WHERE position = 1;

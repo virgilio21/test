@@ -39,6 +39,7 @@ SELECT aeropuertos.nombre
 Resultado:
 
 ![Resultado más movimiento en aeropuertos](images/aeropuerto_mas_movimiento.png)
+
 Dos aeropuertos registran el mayor numero de movimientos durante el año.
 
 ## ¿Cuál es el nombre de la aerolínea que ha realizado mayor número de vuelos durante el año?
@@ -69,6 +70,7 @@ SELECT aerolineas.nombre
 Resultado:
 
 ![Resultado mayor numero de vuelos](images/aerolinea_mas_vuelos.png)
+
 Dos aerolineas registran el mayor numero de vuelos durante el año.
 
 ## ¿En qué día se han tenido mayor número de vuelos?
@@ -96,6 +98,8 @@ SELECT fecha_posiciones.fecha
 Resultado:
 
 ![Resultado dia con más vuelos](images/dia_mas_vuelos.png)
+
+El dia con más vuelos fue el dia ´2021-05-02´
 
 ## ¿Cuáles son las aerolíneas que tienen mas de 2 vuelos por día?
 

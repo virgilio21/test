@@ -99,9 +99,9 @@ Resultado:
 
 ![Resultado dia con más vuelos](images/dia_mas_vuelos.png)
 
-El dia con más vuelos fue el dia ´2021-05-02´
+El dia con más vuelos fue el dia 2021-05-02
 
-## ¿Cuáles son las aerolíneas que tienen mas de 2 vuelos por día?
+## ¿Cuáles son las aerolíneas que tienen más de 2 vuelos por día?
 
 Ejecute la query:
 ```

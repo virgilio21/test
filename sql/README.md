@@ -4,7 +4,7 @@
 2. Configure su conexion en un gestor de base de datos(Dbeaver o DataGrip) con los valores de las variables de entorno definidas previamente al levantar el contenedor
 3. Ejecute el contenido del archivo `datos_aerolineas.sql` en la base de datos
 
-## Como levantar los datos con [SQL Fiddle](https://ejemplo.com/)
+## Como levantar los datos con [SQL Fiddle](http://sqlfiddle.com/#!17/9eecb)
 
 1. Asegurate que seleccionaste postgres ![Selecciona Postgres](images/selecciona_postgres.png)
 2. En el panel izquierdo copia y pega el contenido de `datos_aerolineas.sql` y por ultimo selecciona build schema

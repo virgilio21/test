@@ -7,7 +7,7 @@
 ## Como levantar los datos con [SQL Fiddle](https://ejemplo.com/)
 
 1. Asegurate que seleccionaste postgres ![Selecciona Postgres](images/selecciona_postgres.png)
-2. En panel izquierdo copia y pega el contenido de `datos_aerolineas.sql` y por ultimo selecciona build schema
+2. En el panel izquierdo copia y pega el contenido de `datos_aerolineas.sql` y por ultimo selecciona build schema
 ![Schema Panel](images/panel_izquierdo.png)
 1. Ahora podras ejecutar las querys del lado derecho
    ![Query Panel](images/query_panel.png)
@@ -37,6 +37,7 @@ SELECT aeropuertos.nombre
 ```
 
 Resultado:
+
 ![Resultado más movimiento en aeropuertos](images/aeropuerto_mas_movimiento.png)
 Dos aeropuertos registran el mayor numero de movimientos durante el año.
 
@@ -66,6 +67,7 @@ SELECT aerolineas.nombre
 ```
 
 Resultado:
+
 ![Resultado mayor numero de vuelos](images/aerolinea_mas_vuelos.png)
 Dos aerolineas registran el mayor numero de vuelos durante el año.
 
@@ -92,6 +94,19 @@ SELECT fecha_posiciones.fecha
 ```
 
 Resultado:
+
 ![Resultado dia con más vuelos](images/dia_mas_vuelos.png)
 
-## 
+## ¿Cuáles son las aerolíneas que tienen mas de 2 vuelos por día?
+
+Ejecute la query:
+```
+SELECT id_aerolinea, 
+       fecha,
+       COUNT(*) AS total
+  FROM vuelos
+ GROUP BY id_aerolinea, fecha
+HAVING COUNT(*) > 2;
+```
+
+Resultado: Ninguno, no hay aerolineas que tengan más de dos vuelos por dia. Sin embargo si hay aerolineas con dos vuelos por dia.

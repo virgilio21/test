@@ -61,7 +61,6 @@ def get_count_response_answers(df):
     """Return the number of answered and unanswered answers"""
 
     counts_answers = df.is_answered.value_counts()
-    print(counts_answers)
 
     return counts_answers.loc[True], counts_answers.loc[False]
 

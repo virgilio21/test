@@ -8,4 +8,4 @@ Ejecute el comando `python run.py`
 
 Resultado: 
 
-[Resultado script](images/resultado.png)
+![Resultado script](images/resultado.png)

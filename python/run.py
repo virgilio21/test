@@ -5,6 +5,11 @@ import pandas as pd
 
 from datetime import datetime
 
+ANSWERS_KEYS = [
+    'is_answered', 'view_count', 'question_id', 'closed_date', 
+    'answer_count', 'score', 'last_activity_date', 'last_edit_date',
+    'link', 'closed_reason', 'title'
+]
 
 logging.basicConfig(
     level = logging.INFO,
@@ -23,24 +28,15 @@ def get_json_data(url):
 
 def get_answers(data):
     """Return answers in array dict"""
-
     answers = []
+
     for item in data.get('items', {}):
-        answer = {
-            'is_answered': item.get('is_answered'),
-            'view_count': item.get('view_count'),
-            'question_id': item.get('question_id'),
-            'creation_date': datetime.utcfromtimestamp(item.get('creation_date')),
-            'closed_date': item.get('closed_date'),
-            'answer_count': item.get('answer_count'),
-            'score': item.get('score'),
-            'last_activity_date': item.get('last_activity_date'),
-            'last_edit_date': item.get('last_edit_date'),
-            'link': item.get('link'),
-            'closed_reason': item.get('closed_reason'),
-            'title': item.get('title'),
-            'owner_id': item.get('owner', {}).get('user_id')
-        }
+        answer = { key: item.get(key) for key in ANSWERS_KEYS }
+        answer.update(
+            creation_date=datetime.utcfromtimestamp(item.get('creation_date')),
+            owner_id=item.get('owner', {}).get('user_id')
+        )
+
         answers.append(answer)
     
     return answers
@@ -48,10 +44,8 @@ def get_answers(data):
 
 def get_owners(data):
     """Get owners in array dict"""
-
     owners = []
     for item in data.get('items', {}):
-
         owners.append(item.get('owner'))
 
     return owners
@@ -59,7 +53,6 @@ def get_owners(data):
 
 def get_count_response_answers(df):
     """Return the number of answered and unanswered answers"""
-
     counts_answers = df.is_answered.value_counts()
 
     return counts_answers.loc[True], counts_answers.loc[False]
@@ -67,7 +60,6 @@ def get_count_response_answers(df):
 
 def get_answer_less_visits(df):
     """Return the number of answered and unanswered answers"""
-
     answer = df[df.view_count == df.view_count.min()]
     
     return answer
@@ -75,7 +67,6 @@ def get_answer_less_visits(df):
 
 def get_old_answer(df):
     """Return the oldest answer"""
-
     answer = df[df.creation_date == df.creation_date.min()]
 
     return answer
@@ -83,7 +74,6 @@ def get_old_answer(df):
 
 def get_newest_answer(df):
     """Return newest answer"""
-
     answer = df[df.creation_date == df.creation_date.max()]
 
     return answer
@@ -91,7 +81,6 @@ def get_newest_answer(df):
 
 def get_more_reputation_owner(df):
     """Return the owner with more reputation"""
-
     owner = df[df.reputation == df.reputation.max()]
 
     return owner.reset_index(drop=True)
